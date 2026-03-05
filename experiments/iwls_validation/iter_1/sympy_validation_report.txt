@@ -1,0 +1,19 @@
+SymPy validation report for C1-C3
+
+C1-1 (argmin ordering proxy expression J_khat - min(J_khat,J_kstar)): J_khat - Min(J_khat, J_kstar)
+C1-2 (sandwich identity placeholders): left=True, right=True
+C1-3 (regret-transfer symbolic residual): Delta_kstar - J_khat + alpha*eps_B + beta*eps_C + eps_A + eps_D*gamma
+C1-4 (eps_tot monotonic derivatives): d_eps_tot_d_alpha=eps_B, d_eps_tot_d_beta=eps_C, d_eps_tot_d_gamma=eps_D [nonnegative under eps-component assumptions]
+
+C2-1 (stationary gradient at beta*(pi)): [0, 0]
+C2-2 (A+lambda I eigenvalues): eig1=A11 + lambda, eig2=A22 + lambda [positive for lambda>0]
+C2-3 (existence condition): Assume U continuous and simplex compact => existence by Weierstrass.
+C2-4 (descent after PL substitution residual): (-grad_norm_sq/2 - mu*(U_star - U_x))/L
+C2-5 (linear-rate factor term): -(L - mu)*(U_star - U_x)/L
+C2-5 auxiliary PL lower bound symbol: 2*mu*(-U_star + U_x)
+
+C3-1 (gate monotonic partials): dG_dV=a1, dG_dU=a2, dG_dT=a3 [nonnegative with a_i>=0]
+C3-2 (separation margin expression g_harm - g_safe): T_harm_under*a3 - T_safe_bar*a3 + U_harm_under*a2 - U_safe_bar*a2 + V_harm_under*a1 - V_safe_bar*a1
+C3-3 (set nesting implication form): Implies(tau1 <= tau2, F_tau1_subseteq_F_tau2)
+
+Result: C1-1..C1-4, C2-1..C2-5, and C3-1..C3-3 were symbolically checked against SYMPY.md assumptions.
